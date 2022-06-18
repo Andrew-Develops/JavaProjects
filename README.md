@@ -1,6 +1,5 @@
 # JavaSmallProjects
 
-Java small projects
 
 JavaSchoolHibernateOnly
 
