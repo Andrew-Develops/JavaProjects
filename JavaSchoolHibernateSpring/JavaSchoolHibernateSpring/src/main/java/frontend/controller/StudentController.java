@@ -1,4 +1,4 @@
-package frontend;
+package frontend.controller;
 
 import business.dto.StudentDTO;
 import business.service.StudentService;

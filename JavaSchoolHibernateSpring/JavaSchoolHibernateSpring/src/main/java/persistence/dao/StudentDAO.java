@@ -1,6 +1,6 @@
 package persistence.dao;
 
-import config.HibernateUtil;
+import persistence.config.HibernateUtil;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 import persistence.entities.Student;

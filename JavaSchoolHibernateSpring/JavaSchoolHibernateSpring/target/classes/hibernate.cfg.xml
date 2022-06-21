@@ -10,21 +10,15 @@
         <!-- Dialectul de baza de data folosit: mySql, oracle, postgres -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <!-- Driverul pentru baza de date : jdbc -->
-        <!--
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        -->
         <!-- Adresa bazei de date -->
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/school_db</property>
         <!-- Userul pentru conectarea la baza de date -->
         <property name="hibernate.connection.username">root</property>
         <!-- Parola pentru conectarea la baza de date -->
         <property name="hibernate.connection.password">4991</property>
-
         <!-- Proprietate care forteaza Hibernate sa afiseze queriurile rulata in baza de date -->
-        <!--
         <property name="show_sql">true</property>
-        -->
-
         <!-- Specificam care sunt clasele care sunt mapate cu un tabel din baza de date -->
         <mapping class="persistence.entities.Student"/>
         <mapping class="persistence.entities.Address"/>

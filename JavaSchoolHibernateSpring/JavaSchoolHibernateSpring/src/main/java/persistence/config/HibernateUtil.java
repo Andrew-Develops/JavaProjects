@@ -1,4 +1,4 @@
-package config;
+package persistence.config;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;

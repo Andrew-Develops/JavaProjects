@@ -1,4 +1,4 @@
-package frontend;
+package frontend.controller;
 
 import business.dto.GroupDTO;
 import business.service.GroupService;
