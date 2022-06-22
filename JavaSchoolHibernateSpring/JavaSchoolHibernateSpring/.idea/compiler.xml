@@ -10,6 +10,9 @@
         <module name="JavaSchoolHibernateOnly" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="JavaSchoolHibernateSpring" target="18" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
