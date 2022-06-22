@@ -109,4 +109,15 @@ public class CustomerService {
         return customerDTO;
     }
 
+    //cautam daca mai exista un email identic in baza de date
+    public long countEmail(String email) {
+        return customerDAO.countEmail(email);
+    }
+
+
+    public int deleteCustomer(int id) {
+        return customerDAO.deleteCustomer(id);
+    }
+
+
 }

@@ -1,11 +1,14 @@
 package persistence.dao;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 import persistence.entities.Customer;
 import persistence.util.HibernateUtil;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+@Repository
 public class CustomerDAO {
 
     //inseram un customer
@@ -69,4 +72,18 @@ public class CustomerDAO {
 
         return result;
     }
+
+
+    public int deleteCustomer(int id) {
+        Session session = HibernateUtil.getSessionFactoryMethod().openSession();
+        session.beginTransaction();
+        Query deleteCustomerQuery = session.getNamedQuery("deleteCustomerById");
+        deleteCustomerQuery.setParameter("id", id);
+        int result = deleteCustomerQuery.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+
+        return result;
+    }
+
 }

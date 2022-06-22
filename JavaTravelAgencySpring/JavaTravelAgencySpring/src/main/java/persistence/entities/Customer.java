@@ -2,11 +2,13 @@ package persistence.entities;
 
 import javax.persistence.*;
 import java.util.Date;
+
 @NamedQueries({
         @NamedQuery(name = "countEmail", query = "select count(email) from Customer where email = :email"),
         @NamedQuery(name = "findCustomerByEmail", query = "select customer from Customer customer where customer.email = :email"),
         @NamedQuery(name = "findCustomerByUsername", query = "select customer from Customer customer inner join customer.account account where account.userName = :userName"),
-        @NamedQuery(name = "findCustomerByUserNameAndPassword", query = "select customer from Customer customer inner join customer.account account where account.userName = :userName and account.password = :password")
+        @NamedQuery(name = "findCustomerByUserNameAndPassword", query = "select customer from Customer customer inner join customer.account account where account.userName = :userName and account.password = :password"),
+        @NamedQuery(name = "deleteCustomerById", query = "delete from Customer where id = :id"),
 })
 @Entity
 @Table(name = "customers")
@@ -21,6 +23,7 @@ public class Customer {
     @Column(name = "address")
     private String address;
     @Column(name = "date_of_birth")
+    @Temporal(TemporalType.DATE)
     private Date birthDate;
     @Column(name = "phone_number")
     private String phoneNumber;

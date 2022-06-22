@@ -1,11 +1,12 @@
 package persistence.dao;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 import persistence.entities.Account;
 import persistence.util.HibernateUtil;
 
 import javax.persistence.Query;
-
+@Repository
 public class AccountDAO {
 
     //updatam statusul unui user cand il logam
@@ -16,7 +17,7 @@ public class AccountDAO {
         updateUserLogInQuery.setParameter("loggedIn", loggedIn);
         updateUserLogInQuery.setParameter("userName", userName);
         int result = updateUserLogInQuery.executeUpdate();
-        session.beginTransaction().commit();
+        session.getTransaction().commit();
         session.close();
         return result;
     }
@@ -36,13 +37,13 @@ public class AccountDAO {
     }
 
     //verificam daca userul exista in baza de date
-    public Account checkRegistration(String userName, String password) {
+    public String checkRegistration(String userName, String password) {
         Session session = HibernateUtil.getSessionFactoryMethod().openSession();
         session.beginTransaction();
         Query checkRegistrationQuery = session.createNamedQuery("checkRegistration");
         checkRegistrationQuery.setParameter("userName", userName);
         checkRegistrationQuery.setParameter("password", password);
-        Account account = (Account) checkRegistrationQuery.getSingleResult();
+        String account = (String) checkRegistrationQuery.getSingleResult();
         session.getTransaction().commit();
         session.close();
 

@@ -19,22 +19,23 @@ public class AccountService {
     }
 
     //setam statusul unui user logged in true sau false in functie de maparea pe care o sa o cream in controller
-    public void updateUserLogIn(boolean loggedIn, String userName) {
-        accountDAO.updateUserLogIn(loggedIn, userName);
+    public int updateUserLogIn(boolean loggedIn, String userName) {
+        return accountDAO.updateUserLogIn(loggedIn, userName);
     }
 
     //updatam username-ul unui user
-    public void changeUserName(String newUsername, String userName) {
-        accountDAO.changeUserName(newUsername, userName);
+    public int changeUserName(String newUsername, String userName) {
+        return accountDAO.changeUserName(newUsername, userName);
     }
+
     //numaram cati useri au acelasi userName in baza de date
-    public void countUserName(String userName) {
-        accountDAO.countUserName(userName);
+    public long countUserName(String userName) {
+        return accountDAO.countUserName(userName);
     }
 
     //verificam daca mai exista un user nu acelasi nume si parola in baza de date
-    public void checkRegistration(String userName, String password) {
-        accountDAO.checkRegistration(userName, password);
+    public String checkRegistration(String userName, String password) {
+        return accountDAO.checkRegistration(userName, password);
     }
 
     //metoda care cripteaza parola inainte sa ajunga in baza de date
