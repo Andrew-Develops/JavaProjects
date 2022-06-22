@@ -38,9 +38,9 @@ public class CustomerController {
         if (customerService.findCustomerAccount(userName, cryptPassword) == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Wrong input for 'UserName' or 'password'!");
         }
-        //parola criptata o introducem in metoda checkRegistration sa vedem daca acel cont cu userName si parola respectiva exista in baza de date
+        //parola criptata impreuna cu userName o introducem in metoda checkRegistration sa vedem daca acel cont exista in baza de date
         if (cryptPassword.equals(accountService.checkRegistration(userName, cryptPassword))) {
-            //acum schimbam statutul userului din notLoggedIn in LoggedIn
+            //acum schimbam statutul userului din notLoggedIn in LoggedIn (de la 0 la 1)
             accountService.updateUserLogIn(true, userName);
             return ResponseEntity.ok("User " + userName + "logged in successfully.");
         } else {

@@ -16,12 +16,16 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(name = "user_name")
     private String userName;
+
     @Column(name = "password")
     private String password;
+
     @Column(name = "logged_in")
     private boolean loggedIn;
+
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Customer customer;
 

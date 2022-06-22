@@ -39,6 +39,7 @@ id INT PRIMARY KEY AUTO_INCREMENT ,
 type VARCHAR(15) NOT NULL,
 number_of_rooms INT NOT NULL,
 extra_bed TINYINT ,
+price double not null,
 rooms_available INT NOT NULL
 );
 
@@ -108,9 +109,6 @@ number_of_days INT NOT NULL,
 promoted TINYINT NOT NULL,
 price_for_adults DOUBLE NOT NULL,
 price_for_child DOUBLE NOT NULL,
-number_of_adults INT NOT NULL,
-number_of_children INT ,
-trip_price DOUBLE NOT NULL,
 number_of_trips_available INT NOT NULL
 );
 
@@ -138,6 +136,9 @@ UNIQUE(email,accounts_id)
 
 CREATE TABLE purchased_trips(
 id INT PRIMARY KEY AUTO_INCREMENT,
+date_of_purchase date,
+total_price double,
+discount double,
 trips_id INT NOT NULL,
 CONSTRAINT fk_trips_purchased
 FOREIGN KEY (trips_id)

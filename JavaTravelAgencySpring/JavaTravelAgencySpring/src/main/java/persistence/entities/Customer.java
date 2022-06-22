@@ -16,19 +16,26 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "surname")
     private String surname;
+
     @Column(name = "address")
     private String address;
+
     @Column(name = "date_of_birth")
     @Temporal(TemporalType.DATE)
     private Date birthDate;
+
     @Column(name = "phone_number")
     private String phoneNumber;
+
     @Column(name = "email")
     private String email;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "accounts_id")
     private Account account;

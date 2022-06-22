@@ -1,0 +1,13 @@
+http://localhost:8080/insertCustomer
+{
+    "name":"Matei",
+    "surname":"Iftimie",
+    "address":"Galati Strada Magurele",
+    "birthDate":"2020-04-15",
+    "phoneNumber":"0743544",
+    "email":"matei@email.com",
+    "accountDTO":{
+        "userName":"mateiift",
+        "password":"12345"
+    }
+}
