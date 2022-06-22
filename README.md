@@ -7,7 +7,8 @@ JavaSchoolHibernateOnly: O aplicatie care insereaza, updateaza, sterge si afisea
 
 JavaSchoolHibernateSpring: O aplicatie care gestioneaza operatii CRUD si raspunde la http requesturi de tip GET, POST, PUT, DELETE
 
-JavaTravelAgencySpring: WIP
+JavaTravelAgencySpring: (WIP) modelarea unei agentii de turism si toate functionalitatile care se regasesc normal
+
 
 ## Technologies
 
