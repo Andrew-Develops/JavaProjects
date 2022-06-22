@@ -1,7 +1,14 @@
 package persistence.entities;
 
 import javax.persistence.*;
-
+@NamedQueries({
+        @NamedQuery(name = "findAccount", query = "select account from Account account where account.userName= :userName and account.password= :password"),
+        @NamedQuery(name = "updateUserLogIn",query = "update from Account set loggedIn= :loggedIn where userName= :userName"),
+        @NamedQuery(name = "checkRegistration", query = "select password from Account where userName= :userName and password= :password"),
+        @NamedQuery(name = "deleteAccount", query = "delete from Account where userName= :userName"),
+        @NamedQuery(name = "countUserName",query = "select count(userName) from Account where userName= :userName "),
+        @NamedQuery(name = "changeUserName",query = "update from Account account set userName= : newUserName where userName= :userName "),
+})
 @Entity
 @Table(name = "accounts")
 public class Account {
@@ -14,7 +21,7 @@ public class Account {
     private String password;
     @Column(name = "logged_in")
     private boolean loggedIn;
-    @OneToOne(mappedBy = "account")
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Customer customer;
 
     public Account() {
