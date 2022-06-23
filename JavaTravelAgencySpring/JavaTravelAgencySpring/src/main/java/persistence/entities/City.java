@@ -12,6 +12,7 @@ import java.util.Set;
         @NamedQuery(name = "deleteCity", query = "delete from City where name= :name"),
         @NamedQuery(name = "countCity", query = "select count(name) from City where name= :name"),
         @NamedQuery(name = "changeCityName", query = "update from City set name= :newName where name= :name")
+
 })
 
 @Entity

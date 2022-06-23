@@ -16,7 +16,6 @@ public class AccountDTO {
     @NotNull
     private boolean loggedIn;
 
-
     public AccountDTO() {
     }
 

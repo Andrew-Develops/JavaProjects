@@ -4,6 +4,24 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
+@NamedQueries({
+        @NamedQuery(name = "countTripByNameAndDepartureDate", query = "select count(trip) from Trip trip where trip.name= :name and trip.departureDate= :departureDate"),
+        @NamedQuery(name = "deleteTripsByName", query = "delete from Trip where name= :name "),
+        @NamedQuery(name = "findAllTrips", query = "select trip from Trip trip"),
+        @NamedQuery(name = "findTripByName", query = "select trip from Trip trip where name= :name"),
+        @NamedQuery(name = "findPromotedTrips", query = "select trip from Trip trip where promoted= :promoted"),
+        @NamedQuery(name = "findTripByMealType", query = "select trip from Trip trip where mealType= :mealType"),
+        @NamedQuery(name = "findTripByDepartureDate", query = "select trip from Trip trip where departureDate= :departureDate"),
+        @NamedQuery(name = "findTripByPriceForAdult", query = "select trip from Trip trip where priceForAdult= :priceForAdult"),
+        @NamedQuery(name = "findTripByPriceForChild", query = "select trip from Trip trip where priceForChild= :priceForChild"),
+        @NamedQuery(name = "findTripByNumberOfDays", query = "select trip from Trip trip where numberOfDays= :numberOfDays"),
+        @NamedQuery(name = "findTripByHotel" , query = "select trip from Trip trip inner join trip.hotel hotel where hotel.name=name"),
+        @NamedQuery(name = "findTripByHotelStars" , query = "select trip from Trip trip inner join trip.hotel hotel where hotel.numberOfStars= :numberOfStars"),
+        @NamedQuery(name = "findTripByCity" , query = "select trip from Trip trip inner join trip.hotel hotel inner join hotel.city city where city.name= :name"),
+        @NamedQuery(name = "findTripByCountry" , query = "select trip from Trip trip inner join trip.hotel hotel inner join hotel.city city inner join city.country country where country.name= :name"),
+        @NamedQuery(name = "findTripByContinent", query = "select trip from Trip trip inner join trip.hotel hotel inner join hotel.city city inner join city.country country inner join country.continent continent where continent.name= :name"),
+        @NamedQuery(name = "updateNumberOfTripsAvailable", query = "update from Trip set numberOfTripsAvailable = :numberOfTripsAvailable -1")
+})
 @Entity
 @Table(name = "trips")
 public class Trip {
@@ -53,14 +71,15 @@ public class Trip {
     @OneToOne(mappedBy = "trip")
     private Set<PurchasedTrip> purchasedTripSet;
 
-    public Trip(String name, String mealType, Date departureDate, Flight departureFlight, Hotel stayingHotel, Date returnDate, Flight returningFlight, int numberOfDays, boolean promoted, double priceForAdult, double priceForChild, int numberOfTripsAvailable) {
+    public Trip(String name, Flight departureFlight, Flight returningFlight, Hotel stayingHotel, String mealType, java.sql.Date departureDate,
+                Date returnDate, int numberOfDays, boolean promoted, double priceForAdult, double priceForChild, int numberOfTripsAvailable) {
         this.name = name;
+        this.departureFlight = departureFlight;
+        this.returningFlight = returningFlight;
+        this.stayingHotel = stayingHotel;
         this.mealType = mealType;
         this.departureDate = departureDate;
-        this.departureFlight = departureFlight;
-        this.stayingHotel = stayingHotel;
         this.returnDate = returnDate;
-        this.returningFlight = returningFlight;
         this.numberOfDays = numberOfDays;
         this.promoted = promoted;
         this.priceForAdult = priceForAdult;
