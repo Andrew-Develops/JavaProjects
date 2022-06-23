@@ -3,6 +3,10 @@ package persistence.entities;
 import javax.persistence.*;
 import java.util.Set;
 
+@NamedQueries({
+        @NamedQuery(name = "findRoomByType", query = "select room from Room room where type= :type"),
+        @NamedQuery(name = "updateRoomsAvailable", query = "update from Room set roomsAvailable= :roomsAvailable where type= :type")
+})
 @Entity
 @Table(name = "rooms")
 public class Room {
@@ -84,6 +88,14 @@ public class Room {
 
     public void setHotelSet(Set<Hotel> hotelSet) {
         this.hotelSet = hotelSet;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override

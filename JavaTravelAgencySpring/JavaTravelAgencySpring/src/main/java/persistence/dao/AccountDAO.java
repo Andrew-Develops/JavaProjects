@@ -6,6 +6,7 @@ import persistence.entities.Account;
 import persistence.util.HibernateUtil;
 
 import javax.persistence.Query;
+
 @Repository
 public class AccountDAO {
 
@@ -76,6 +77,7 @@ public class AccountDAO {
 
         return result;
     }
+
     //updatam userName-ul unui user
     public int changeUserName(String newUserName, String userName) {
         Session session = HibernateUtil.getSessionFactoryMethod().openSession();

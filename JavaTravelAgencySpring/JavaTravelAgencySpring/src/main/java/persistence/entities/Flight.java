@@ -4,6 +4,11 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
 
+@NamedQueries({
+        @NamedQuery(name = "flightByNumber", query = "select flight from Flight flight where flight.flightNumber= :flightNumber"),
+        @NamedQuery(name = "countFlightNumber", query = "select count(flightNumber) from Flight where flightNumber= :flightNumber"),
+        @NamedQuery(name = "deleteFlight", query = "delete from Flight where flightNumber= :flightNumber")
+})
 @Entity
 @Table(name = "flights")
 public class Flight {
@@ -133,6 +138,7 @@ public class Flight {
     public void setSeatsAvailable(int seatsAvailable) {
         this.seatsAvailable = seatsAvailable;
     }
+
     @Override
     public String toString() {
         return "Flight: " + flightNumber + "departure date: " + departureDate + ",time: " + departureTime +

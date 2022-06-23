@@ -2,7 +2,10 @@ package persistence.entities;
 
 import javax.persistence.*;
 import java.util.Date;
-
+@NamedQueries({
+        @NamedQuery(name = "findPurchasedTripsByCustomer",query = "select p from PurchasedTrip p inner join p.customer customer where name= :name"),
+        @NamedQuery(name = "findPurchasedTripsByDate",query = "select p from PurchasedTrip p where (dateOfPurchase between :dateOfPurchase and :currentDate) ")
+})
 @Entity
 @Table(name = "purchased_trips")
 public class PurchasedTrip {

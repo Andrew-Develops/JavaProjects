@@ -3,6 +3,15 @@ package persistence.entities;
 import javax.persistence.*;
 import java.util.Set;
 
+@NamedQueries({
+        @NamedQuery(name = "deleteHotelByName", query = "delete from Hotel where name= :name"),
+        @NamedQuery(name = "countHotel", query = "select count(name) from Hotel where name= :name"),
+        @NamedQuery(name = "findHotelByName", query = "select hotel from Hotel hotel where hotel.name= :name"),
+        @NamedQuery(name = "findHotelsInCity", query = "select hotel from Hotel hotel inner join hotel.city city where city.name= :name"),
+        @NamedQuery(name = "changeHotelName", query = "update from Hotel set name= :newName where name= :name"),
+        @NamedQuery(name = "findHotelByAddress", query = "select hotel from Hotel hotel where hotel.address= :address"),
+        @NamedQuery(name = "findHotelByNumberOfStars", query = "select hotel from Hotel hotel where hotel.numberOfStars= :numberOfStars"),
+})
 @Entity
 @Table(name = "hotels")
 public class Hotel {
@@ -32,11 +41,13 @@ public class Hotel {
             inverseJoinColumns = {@JoinColumn(name = "rooms_id")})
     private Set<Room> roomSet;
 
-    public Hotel(String name, String address, double numberOfStars, String description) {
+    public Hotel(String name, String address, double numberOfStars, String description, City city, Set<Room> roomSet) {
         this.name = name;
         this.address = address;
         this.numberOfStars = numberOfStars;
         this.description = description;
+        this.city = city;
+        this.roomSet = roomSet;
     }
 
     public Hotel() {
@@ -89,6 +100,15 @@ public class Hotel {
     public void setCity(City city) {
         this.city = city;
     }
+
+    public Set<Room> getRoomSet() {
+        return roomSet;
+    }
+
+    public void setRoomSet(Set<Room> roomSet) {
+        this.roomSet = roomSet;
+    }
+
 
     @Override
     public String toString() {
