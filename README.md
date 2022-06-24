@@ -6,7 +6,7 @@
 JavaSchoolHibernateOnly: 
 An application that inserts, updates, deletes and displays students, teachers, groups from the database using only Hibernate framework
 
-JavaSchoolHibernateSpring: An application that inserts, updates, deletes and displays students, teachers, groups from the database and responds to the GET, POST, PUT, DELETE http request
+JavaSchoolHibernateSpring: An application that inserts, updates, deletes and displays students, teachers, groups from the database and responds to http request
 
 
 JavaTravelAgencySpring: (WIP) modeling a travel agency and all the functionalities that are normally found
