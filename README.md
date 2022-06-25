@@ -3,11 +3,13 @@
 2. [Technologies](#technologies)
 ### General Info
 
-JavaSchoolHibernateOnly: O aplicatie care insereaza, updateaza, sterge si afiseaza studenti, profesori, grupe din baza de date
+JavaSchoolHibernateOnly: 
+An application that inserts, updates, deletes and displays students, teachers, groups from the database using only Hibernate framework
 
-JavaSchoolHibernateSpring: O aplicatie care insereaza, updateaza, sterge si afiseaza studenti, profesori, grupe din baza de date si raspunde la requesturi http de tip GET, POST, PUT, DELETE
+JavaSchoolHibernateSpring: An application that inserts, updates, deletes and displays students, teachers, groups from the database and responds to http request
 
-JavaTravelAgencySpring: (WIP) modelarea unei agentii de turism si toate functionalitatile care se regasesc normal
+
+JavaTravelAgencySpring: (WIP) modeling a travel agency and all the functionalities that are normally found
 
 
 ## Technologies
