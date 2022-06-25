@@ -5,7 +5,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages={
+        "business.dto.CityDTO"})
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"persistence.dao", "business.service", "frontEnd.controller"})
 public class Main {

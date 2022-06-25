@@ -1,6 +1,7 @@
 package persistence.dao;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 import persistence.entities.Trip;
 import persistence.util.HibernateUtil;
 
@@ -8,6 +9,7 @@ import javax.persistence.Query;
 import java.sql.Date;
 import java.util.List;
 
+@Repository
 public class TripDAO {
 
     //inseram o calatorie

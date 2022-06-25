@@ -42,7 +42,6 @@ public class CountryDTO {
     public String toString() {
         return "CountryDTO{" +
                 "name='" + name + '\'' +
-                ", continentDTO=" + continentDTO +
                 '}';
     }
 }

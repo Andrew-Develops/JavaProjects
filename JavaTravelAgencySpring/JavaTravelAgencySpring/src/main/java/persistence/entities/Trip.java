@@ -8,10 +8,11 @@ import java.util.Set;
         @NamedQuery(name = "countTripByNameAndDepartureDate", query = "select count(trip) from Trip trip where trip.name= :name and trip.departureDate= :departureDate"),
         @NamedQuery(name = "deleteTripsByName", query = "delete from Trip where name= :name "),
         @NamedQuery(name = "findAllTrips", query = "select trip from Trip trip"),
-        @NamedQuery(name = "findTripByName", query = "select trip from Trip trip where name= :name"),
-        @NamedQuery(name = "findPromotedTrips", query = "select trip from Trip trip where promoted= :promoted"),
         @NamedQuery(name = "findTripByMealType", query = "select trip from Trip trip where mealType= :mealType"),
         @NamedQuery(name = "findTripByDepartureDate", query = "select trip from Trip trip where departureDate= :departureDate"),
+        @NamedQuery(name = "findTripByName", query = "select trip from Trip trip where name= :name")
+        /*
+        @NamedQuery(name = "findPromotedTrips", query = "select trip from Trip trip where promoted= :promoted"),
         @NamedQuery(name = "findTripByPriceForAdult", query = "select trip from Trip trip where priceForAdult= :priceForAdult"),
         @NamedQuery(name = "findTripByPriceForChild", query = "select trip from Trip trip where priceForChild= :priceForChild"),
         @NamedQuery(name = "findTripByNumberOfDays", query = "select trip from Trip trip where numberOfDays= :numberOfDays"),
@@ -21,6 +22,7 @@ import java.util.Set;
         @NamedQuery(name = "findTripByCountry" , query = "select trip from Trip trip inner join trip.hotel hotel inner join hotel.city city inner join city.country country where country.name= :name"),
         @NamedQuery(name = "findTripByContinent", query = "select trip from Trip trip inner join trip.hotel hotel inner join hotel.city city inner join city.country country inner join country.continent continent where continent.name= :name"),
         @NamedQuery(name = "updateNumberOfTripsAvailable", query = "update from Trip set numberOfTripsAvailable = :numberOfTripsAvailable -1")
+         */
 })
 @Entity
 @Table(name = "trips")
@@ -68,7 +70,7 @@ public class Trip {
     @Column(name = "number_of_trips_available")
     private int numberOfTripsAvailable;
 
-    @OneToOne(mappedBy = "trip")
+    @OneToMany(mappedBy = "trip")
     private Set<PurchasedTrip> purchasedTripSet;
 
     public Trip(String name, Flight departureFlight, Flight returningFlight, Hotel stayingHotel, String mealType, java.sql.Date departureDate,

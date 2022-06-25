@@ -10,7 +10,7 @@ import java.util.Set;
 
 })
 @Entity
-@Table(name = "continent")
+@Table(name = "continents")
 public class Continent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

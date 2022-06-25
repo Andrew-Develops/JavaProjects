@@ -67,6 +67,8 @@ public class Country {
 
     @Override
     public String toString() {
-        return "Country: " + name + ", " + continent;
+        return "Country{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }

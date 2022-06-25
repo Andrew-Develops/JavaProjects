@@ -42,7 +42,6 @@ public class CityDTO {
     public String toString() {
         return "CityDTO{" +
                 "name='" + name + '\'' +
-                ", countryDTO=" + countryDTO +
                 '}';
     }
 }

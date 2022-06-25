@@ -1,7 +1,5 @@
 package persistence.entities;
 
-import jdk.jfr.Name;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -85,6 +83,8 @@ public class City {
 
     @Override
     public String toString() {
-        return "City: " + name + ", " + country;
+        return "City{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }

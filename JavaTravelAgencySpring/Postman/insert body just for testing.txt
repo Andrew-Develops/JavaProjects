@@ -11,3 +11,14 @@ http://localhost:8080/insertCustomer
         "password":"12345"
     }
 }
+
+http://localhost:8080/insertCity
+{
+    "name":"Barcelona",
+    "countryDTO":{
+        "name":"Spain",
+        "continentDTO":{
+            "name":"Europe"
+        }
+    }
+}

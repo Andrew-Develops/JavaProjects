@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import persistence.entities.Country;
 import persistence.util.HibernateUtil;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import java.util.List;
 
@@ -50,7 +51,14 @@ public class CountryDAO {
         session.beginTransaction();
         Query findCountryQuery = session.createNamedQuery("findCountry");
         findCountryQuery.setParameter("name", name);
-        Country country = (Country) findCountryQuery.getSingleResult();
+        //cand incercam sa adaugam cascadat informatiile aveam o eroare NoResultException, care nu ne permitea
+        //sa adaugam un oras nou pe acelas continent, si se pare ca asta a rezolvat treaba
+        Country country = null;
+        try {
+            country = (Country) findCountryQuery.getSingleResult();
+        } catch (NoResultException e) {
+            System.out.println(e.getMessage());
+        }
         session.getTransaction().commit();
         session.close();
         return country;
