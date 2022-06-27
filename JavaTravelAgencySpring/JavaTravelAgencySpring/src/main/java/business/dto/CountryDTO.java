@@ -15,8 +15,9 @@ public class CountryDTO {
     @Valid
     private ContinentDTO continentDTO;
 
-    public CountryDTO(String name) {
+    public CountryDTO(String name, ContinentDTO continentDTO) {
         this.name = name;
+        this.continentDTO = continentDTO;
     }
 
     public CountryDTO() {

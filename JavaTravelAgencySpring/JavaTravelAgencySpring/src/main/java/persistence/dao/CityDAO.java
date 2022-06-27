@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import persistence.entities.City;
 import persistence.util.HibernateUtil;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import java.util.List;
 
@@ -21,12 +22,19 @@ public class CityDAO {
     }
 
     //cautam un oras dupa nume
+    //cand incercam sa inseram un oras dam de eroarea .NoResultException, acel try catch ar trebui sa rezolve problema
     public City findCityByName(String name) {
         Session session = HibernateUtil.getSessionFactoryMethod().openSession();
         session.beginTransaction();
         Query findCityByNameQuery = session.getNamedQuery("findCityByName");
         findCityByNameQuery.setParameter("name", name);
-        City city = (City) findCityByNameQuery.getSingleResult();
+        City city = null;
+        try {
+            city = (City) findCityByNameQuery.getSingleResult();
+        } catch (NoResultException e) {
+            System.out.println(e.getMessage());
+        }
+
         session.getTransaction().commit();
         session.close();
 

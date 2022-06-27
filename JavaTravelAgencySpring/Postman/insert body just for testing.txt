@@ -22,3 +22,16 @@ http://localhost:8080/insertCity
         }
     }
 }
+
+http://localhost:8080/insertContinent
+{
+    "name":"Australia"
+}
+
+http://localhost:8080/insertCountry
+{
+    "name":"China",
+    "continentDTO":{
+        "name":"Asia"
+    }
+}

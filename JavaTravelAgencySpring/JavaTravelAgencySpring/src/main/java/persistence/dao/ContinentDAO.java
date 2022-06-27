@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import persistence.entities.Continent;
 import persistence.util.HibernateUtil;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 @Repository
@@ -44,12 +45,18 @@ public class ContinentDAO {
     }
 
     //cautam un continent dupa nume
+    //cand incercam sa inseram un continent dam de eroarea .NoResultException, acel try catch ar trebui sa rezolve problema
     public Continent findContinentByName(String name) {
         Session session = HibernateUtil.getSessionFactoryMethod().openSession();
         session.beginTransaction();
         Query findContinentQuery = session.createNamedQuery("findContinentByName");
         findContinentQuery.setParameter("name", name);
-        Continent continent = (Continent) findContinentQuery.getSingleResult();
+        Continent continent = null;
+        try {
+            continent = (Continent) findContinentQuery.getSingleResult();
+        } catch (NoResultException e) {
+            System.out.println(e.getMessage());
+        }
         session.getTransaction().commit();
         session.close();
         return continent;

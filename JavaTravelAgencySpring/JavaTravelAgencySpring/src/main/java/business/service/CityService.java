@@ -35,7 +35,9 @@ public class CityService {
     }
     //introducem o tara pe un oras
     public void setCountry(CityDTO cityDTO, City city) {
+        //mai intai cautam tara in baza de date pentru a nu insera mai multe intrari cu acelasi nume
         Country countryFound = countryDAO.findCountryByName(cityDTO.getCountryDTO().getName());
+        //daca tara nu exista in baza de date atunci inseram una de la 0
         if (countryFound == null) {
             Country country = new Country();
             country.setName(cityDTO.getCountryDTO().getName());
@@ -46,7 +48,7 @@ public class CityService {
         }
     }
 
-    private void setContinent(CityDTO cityDTO, Country country) {
+    public void setContinent(CityDTO cityDTO, Country country) {
         //verificam daca continentul pe care il adaugam exista deja in baza de date
         Continent continentFound = continentDAO.findContinentByName(cityDTO.getCountryDTO().getContinentDTO().getName());
         if (continentFound == null) {

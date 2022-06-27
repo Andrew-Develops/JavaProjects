@@ -53,7 +53,7 @@ public class CityController {
     @DeleteMapping(path = "/deleteCity")
     public ResponseEntity deleteCityByName(@RequestParam String name) {
         if (cityService.countCity(name) == 0) {
-            return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body(name + " there is already a city with that name in database");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(name + " can't found that city in database");
         }
         cityService.deleteCity(name);
         return ResponseEntity.ok("City: " + name + " deleted from database");
@@ -62,7 +62,7 @@ public class CityController {
     @GetMapping(path = "/findCitiesInCountry")
     public ResponseEntity findCitiesInCountry(@RequestParam String name) {
         if (countryService.countCountry(name) == 0) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(name + " not found in database");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(name + " no city with that name in database");
         }
         List<CityDTO> cityDTOList = cityService.findCitiesInCountry(name);
         if (cityDTOList.isEmpty()) {

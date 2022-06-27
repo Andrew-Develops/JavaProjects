@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 @NamedQueries({
-        @NamedQuery(name = "deleteContinent", query = "delete from Country where name= :name"),
-        @NamedQuery(name = "countContinent", query = "select count(name) from Country where name= :name"),
+        @NamedQuery(name = "deleteContinent", query = "delete from Continent where name= :name"),
+        @NamedQuery(name = "countContinent", query = "select count(name) from Continent where name= :name"),
         @NamedQuery(name = "findContinentByName", query = "select continent from Continent continent where continent.name= :name"),
 
 })
