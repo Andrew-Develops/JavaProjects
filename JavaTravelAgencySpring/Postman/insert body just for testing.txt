@@ -39,7 +39,7 @@ http://localhost:8080/insertCountry
 http://localhost:8080/insertHotel
 {
     "name":"Alexandria",
-    "address":"Iasi",
+    "address":"Mircea cel Batran nr3",
     "numberOfStars":"4",
     "description":"hotel perfect pentru cupluri",
     "roomDTO":[{
@@ -60,3 +60,16 @@ http://localhost:8080/insertHotel
         }
     }
 }
+
+http://localhost:8080/insertAirport
+{
+    "name":"Henri Coandă",
+    "cityDTO":{
+        "name":"Bucuresti",
+        "countryDTO":{
+            "name":"Romania"
+        }
+    }
+}
+
+

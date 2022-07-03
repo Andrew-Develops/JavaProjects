@@ -9,7 +9,6 @@ import javax.validation.constraints.Pattern;
 public class AirportDTO {
     @NotNull
     @NotBlank(message = "Introduceti un aeroport")
-    @Pattern(regexp = "([a-z A-Z])*")
     @NotEmpty
     private String name;
     @Valid

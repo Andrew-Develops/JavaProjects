@@ -3,7 +3,7 @@ package persistence.entities;
 import javax.persistence.*;
 
 @NamedQueries({
-        @NamedQuery(name = "findAirportNameByCityName", query = "select airport.name from Airport airport inner join airport.city city where city.name= :name"),
+        @NamedQuery(name = "findAirportNameByCityName", query = "select airport from Airport airport inner join airport.city city where city.name= :name"),
         @NamedQuery(name = "findAirportByName", query = "select airport from Airport airport where name= :name"),
         @NamedQuery(name = "deleteAirportByName", query = "delete from Airport where name= :name"),
         @NamedQuery(name = "changeAirportName", query = "update from Airport set name= :newName where name= :name"),

@@ -17,7 +17,6 @@ public class CountryDTO {
 
     public CountryDTO(String name, ContinentDTO continentDTO) {
         this.name = name;
-        this.continentDTO = continentDTO;
     }
 
     public CountryDTO() {

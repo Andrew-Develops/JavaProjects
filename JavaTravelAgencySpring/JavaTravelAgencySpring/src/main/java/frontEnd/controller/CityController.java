@@ -59,13 +59,13 @@ public class CityController {
     }
 
     @GetMapping(path = "/findCitiesInCountry")
-    public ResponseEntity findCitiesInCountry(@RequestParam String name) {
-        if (countryService.countCountry(name) == 0) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(name + " no city with that name in database");
+    public ResponseEntity findCitiesInCountry(@RequestParam String countryName) {
+        if (countryService.countCountry(countryName) == 0) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(countryName + " no city with that name in database");
         }
-        List<CityDTO> cityDTOList = cityService.findCitiesInCountry(name);
+        List<CityDTO> cityDTOList = cityService.findCitiesInCountry(countryName);
         if (cityDTOList.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No cities found for country '" + name + "'.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No cities found for country '" + countryName + "'.");
         }
         return ResponseEntity.ok(cityDTOList);
     }
