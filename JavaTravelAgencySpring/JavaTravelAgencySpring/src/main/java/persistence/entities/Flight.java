@@ -2,12 +2,13 @@ package persistence.entities;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Date;
+import java.sql.Date;
 
 @NamedQueries({
         @NamedQuery(name = "flightByNumber", query = "select flight from Flight flight where flight.flightNumber= :flightNumber"),
         @NamedQuery(name = "countFlightNumber", query = "select count(flightNumber) from Flight where flightNumber= :flightNumber"),
-        @NamedQuery(name = "deleteFlight", query = "delete from Flight where flightNumber= :flightNumber")
+        @NamedQuery(name = "deleteFlight", query = "delete from Flight where flightNumber= :flightNumber"),
+        @NamedQuery(name = "updateSeatsAvailable", query = "update Flight set seatsAvailable = seatsAvailable - :numberOfPeople where flightNumber= :flightNumber"),
 })
 @Entity
 @Table(name = "flights")
@@ -144,6 +145,6 @@ public class Flight {
         return "Flight: " + flightNumber + "departure date: " + departureDate + ",time: " + departureTime +
                 ",departing from airport: " + departureAirport + " ,arriving date: " + arrivingDate + ",time: "
                 + arrivingTime + " arriving in airport: " + arrivingAirport + ", price:" + price +
-                ",number of seats available:" + seatsAvailable ;
+                ",number of seats available:" + seatsAvailable;
     }
 }

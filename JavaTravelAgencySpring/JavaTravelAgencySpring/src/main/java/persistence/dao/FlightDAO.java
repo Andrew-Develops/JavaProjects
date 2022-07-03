@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import persistence.entities.Flight;
 import persistence.util.HibernateUtil;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import java.util.List;
 
@@ -45,14 +46,31 @@ public class FlightDAO {
     }
 
     //afisam toate zborurile dupa flightNumber
-    public List<Flight> findFlight(String flightNumber) {
+    //cand incercam sa inseram un flight dam de eroarea .NoResultException, acel try catch ar trebui sa rezolve problema
+    public Flight findFlightByFlightNumber(String flightNumber) {
         Session session = HibernateUtil.getSessionFactoryMethod().openSession();
         session.beginTransaction();
         Query findFlightQuery = session.createNamedQuery("flightByNumber");
         findFlightQuery.setParameter("flightNumber", flightNumber);
-        List<Flight> flights = findFlightQuery.getResultList();
+        Flight flight = null;
+        try {
+            flight = (Flight) findFlightQuery.getSingleResult();
+        } catch (NoResultException e) {
+            System.out.println(e.getMessage());
+        }
         session.getTransaction().commit();
         session.close();
-        return flights;
+        return flight;
+    }
+
+    public void updateSeatAvailable(int numberOfPeople, String flightNumber) {
+        Session session = HibernateUtil.getSessionFactoryMethod().openSession();
+        session.beginTransaction();
+        Query updateSeatsAvailableQuery = session.createNamedQuery("updateSeatsAvailable");
+        updateSeatsAvailableQuery.setParameter("numberOfPersons", numberOfPeople);
+        updateSeatsAvailableQuery.setParameter("flightNumber", flightNumber);
+        updateSeatsAvailableQuery.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
     }
 }

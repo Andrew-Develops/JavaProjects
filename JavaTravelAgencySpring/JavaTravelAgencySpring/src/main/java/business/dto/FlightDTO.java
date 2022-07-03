@@ -27,7 +27,7 @@ public class FlightDTO {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss", timezone = "Europe/Bucharest")
     private Timestamp arrivingTime;
     @Valid
-    private AirportDTO airportDTO;
+    private AirportDTO arrivingAirport;
     @NotNull
     private double price;
     @NotNull
@@ -95,12 +95,12 @@ public class FlightDTO {
         this.arrivingTime = arrivingTime;
     }
 
-    public AirportDTO getAirportDTO() {
-        return airportDTO;
+    public AirportDTO getArrivingAirport() {
+        return arrivingAirport;
     }
 
-    public void setAirportDTO(AirportDTO airportDTO) {
-        this.airportDTO = airportDTO;
+    public void setArrivingAirport(AirportDTO arrivingAirport) {
+        this.arrivingAirport = arrivingAirport;
     }
 
     public double getPrice() {
@@ -128,7 +128,7 @@ public class FlightDTO {
                 ", departureAirport=" + departureAirport +
                 ", arrivingDate=" + arrivingDate +
                 ", arrivingTime=" + arrivingTime +
-                ", airportDTO=" + airportDTO +
+                ", airportDTO=" + arrivingAirport +
                 ", price=" + price +
                 ", seatsAvailable=" + seatsAvailable +
                 '}';
