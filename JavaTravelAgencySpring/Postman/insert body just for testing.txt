@@ -35,3 +35,28 @@ http://localhost:8080/insertCountry
         "name":"Asia"
     }
 }
+
+http://localhost:8080/insertHotel
+{
+    "name":"Alexandria",
+    "address":"Iasi",
+    "numberOfStars":"4",
+    "description":"hotel perfect pentru cupluri",
+    "roomDTO":[{
+        "type":"suite",
+        "numberOfRooms":"4",
+        "extraBed":"false",
+        "roomsAvailable":"2",
+        "price":"250"
+    }]
+    ,
+    "cityDTO":{
+        "name":"Galati",
+        "countryDTO":{
+            "name":"Romania",
+            "continentDTO":{
+                "name":"Europe"
+            }
+        }
+    }
+}

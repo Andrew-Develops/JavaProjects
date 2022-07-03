@@ -14,14 +14,6 @@ public class RoomDTO {
     @NotNull
     private double price;
 
-    public RoomDTO(String type, int numberOfRooms, boolean extraBed, int roomsAvailable, double price) {
-        this.type = type;
-        this.numberOfRooms = numberOfRooms;
-        this.extraBed = extraBed;
-        this.roomsAvailable = roomsAvailable;
-        this.price = price;
-    }
-
     public RoomDTO() {
     }
 
@@ -65,14 +57,4 @@ public class RoomDTO {
         this.price = price;
     }
 
-    @Override
-    public String toString() {
-        return "RoomDTO{" +
-                "type='" + type + '\'' +
-                ", numberOfRooms=" + numberOfRooms +
-                ", extraBed=" + extraBed +
-                ", roomsAvailable=" + roomsAvailable +
-                ", price=" + price +
-                '}';
-    }
 }

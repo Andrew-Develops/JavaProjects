@@ -1,7 +1,6 @@
 package frontEnd.controller;
 
 import business.dto.CityDTO;
-import business.dto.CountryDTO;
 import business.service.CityService;
 import business.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class CityController {
         if (cityService.countCity(cityDTO.getName()) != 0) {
             return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body("This city is already in the database.");
         }
-        cityService.insertCityDTO(cityDTO);
+        cityService.insertCity(cityDTO);
         return ResponseEntity.ok(cityDTO.getName() + " added.");
     }
 

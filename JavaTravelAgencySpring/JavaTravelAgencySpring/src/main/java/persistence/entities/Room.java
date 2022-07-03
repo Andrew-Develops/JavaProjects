@@ -32,11 +32,12 @@ public class Room {
     @ManyToMany(mappedBy = "roomSet")
     private Set<Hotel> hotelSet;
 
-    public Room(String type, int numberOfRooms, boolean extraBed, int roomsAvailable) {
+    public Room(String type, int numberOfRooms, boolean extraBed, int roomsAvailable, double price) {
         this.type = type;
         this.numberOfRooms = numberOfRooms;
         this.extraBed = extraBed;
         this.roomsAvailable = roomsAvailable;
+        this.price = price;
     }
 
     public Room() {

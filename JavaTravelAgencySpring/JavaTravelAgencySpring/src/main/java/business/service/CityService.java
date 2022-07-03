@@ -27,7 +27,7 @@ public class CityService {
 
     //inseram un cityDTO in baza de date
     //noi primim din front end obiecte de tip dto si trebuie sa le convertim in entitati
-    public void insertCityDTO(CityDTO cityDTO) {
+    public void insertCity(CityDTO cityDTO) {
         City city = new City();
         city.setName(cityDTO.getName());
         setCountry(cityDTO, city);

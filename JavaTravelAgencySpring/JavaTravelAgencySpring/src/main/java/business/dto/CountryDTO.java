@@ -41,8 +41,6 @@ public class CountryDTO {
 
     @Override
     public String toString() {
-        return "CountryDTO{" +
-                "name='" + name + '\'' +
-                '}';
+        return "CountryDTO: " + name + "," + continentDTO ;
     }
 }

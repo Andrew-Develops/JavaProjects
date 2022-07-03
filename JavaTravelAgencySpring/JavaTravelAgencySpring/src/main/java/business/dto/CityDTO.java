@@ -40,8 +40,6 @@ public class CityDTO {
 
     @Override
     public String toString() {
-        return "CityDTO{" +
-                "name='" + name + '\'' +
-                '}';
+        return "CityDTO: " + name + ", " + countryDTO ;
     }
 }

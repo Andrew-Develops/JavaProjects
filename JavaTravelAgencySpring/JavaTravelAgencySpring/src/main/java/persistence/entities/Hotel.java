@@ -11,6 +11,7 @@ import java.util.Set;
         @NamedQuery(name = "changeHotelName", query = "update from Hotel set name= :newName where name= :name"),
         @NamedQuery(name = "findHotelByAddress", query = "select hotel from Hotel hotel where hotel.address= :address"),
         @NamedQuery(name = "findHotelByNumberOfStars", query = "select hotel from Hotel hotel where hotel.numberOfStars= :numberOfStars"),
+        @NamedQuery(name = "countHotelAddress", query = "select hotel.address from Hotel hotel where hotel.address= :address"),
 })
 @Entity
 @Table(name = "hotels")

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import persistence.entities.Hotel;
 import persistence.util.HibernateUtil;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import java.util.List;
 
@@ -27,6 +28,17 @@ public class HotelDAO {
         Query countHotelQuery = session.createNamedQuery("countHotel");
         countHotelQuery.setParameter("name", name);
         long result = (Long) countHotelQuery.getSingleResult();
+        session.getTransaction().commit();
+        session.close();
+        return result;
+    }
+    //cautam daca un hotel exista deja la acea dresa
+    public List<String> countHotelByAddress(String address) {
+        Session session = HibernateUtil.getSessionFactoryMethod().openSession();
+        session.beginTransaction();
+        Query countHotelAddressQuery = session.createNamedQuery("countHotelAddress");
+        countHotelAddressQuery.setParameter("address",address);
+        List<String> result = countHotelAddressQuery.getResultList();
         session.getTransaction().commit();
         session.close();
         return result;
@@ -69,15 +81,22 @@ public class HotelDAO {
     }
 
     //cautam un hotel dupa adresa
-    public List<Hotel> findHotelByAddress(String address) {
+    public Hotel findHotelByAddress(String address) {
         Session session = HibernateUtil.getSessionFactoryMethod().openSession();
         session.beginTransaction();
         Query findHotelByAddressQuery = session.createNamedQuery("findHotelByAddress");
         findHotelByAddressQuery.setParameter("address", address);
-        List<Hotel> hotelsList = findHotelByAddressQuery.getResultList();
+        //cand incercam sa adaugam cascadat informatiile aveam o eroare NoResultException, care nu ne permitea
+        //se pare ca asta a rezolvat treaba
+        Hotel result = null;
+        try {
+            result = (Hotel) findHotelByAddressQuery.getSingleResult();
+        } catch (NoResultException e) {
+            System.out.println(e.getMessage());
+        }
         session.getTransaction().commit();
         session.close();
-        return hotelsList;
+        return result;
     }
 
     //schimbam numele unui hotel

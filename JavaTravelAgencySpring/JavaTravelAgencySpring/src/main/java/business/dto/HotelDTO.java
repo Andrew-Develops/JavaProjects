@@ -2,6 +2,7 @@ package business.dto;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import java.util.Set;
 
 public class HotelDTO {
     @NotNull
@@ -18,20 +19,15 @@ public class HotelDTO {
     @Max(5)
     private double numberOfStars;
     @NotNull
-    @Valid
     private String description;
+
     @NotNull
     @Valid
-    private RoomDTO roomDTO;
+    private Set<RoomDTO> roomDTO;
+
     @Valid
     private CityDTO cityDTO;
 
-    public HotelDTO(String name, String address, double numberOfStars, String description) {
-        this.name = name;
-        this.address = address;
-        this.numberOfStars = numberOfStars;
-        this.description = description;
-    }
 
     public HotelDTO() {
     }
@@ -68,11 +64,11 @@ public class HotelDTO {
         this.description = description;
     }
 
-    public RoomDTO getRoomDTO() {
+    public Set<RoomDTO> getRoomDTO() {
         return roomDTO;
     }
 
-    public void setRoomDTO(RoomDTO roomDTO) {
+    public void setRoomDTO(Set<RoomDTO> roomDTO) {
         this.roomDTO = roomDTO;
     }
 
