@@ -28,7 +28,7 @@ public class FlightController {
     //cautam un zbor dupa flightNumber
     @GetMapping(path = "/findFlightByFlightNumber")
     public ResponseEntity findFlightByFlightNumber(@RequestParam String flightNumber) {
-        FlightDTO flightDTO = flightService.findFlightByFlightNumber(flightNumber);
+        FlightDTO flightDTO = flightService.findFlightByTheFlightNumber(flightNumber);
         if (flightDTO == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No flight found by flight number:" + flightNumber + ".");
         } else {

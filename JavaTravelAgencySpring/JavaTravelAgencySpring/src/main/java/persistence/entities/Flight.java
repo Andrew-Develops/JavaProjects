@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.sql.Date;
 
 @NamedQueries({
-        @NamedQuery(name = "flightByNumber", query = "select flight from Flight flight where flight.flightNumber= :flightNumber"),
+        @NamedQuery(name = "flightByNumber", query = "select flight from Flight flight where flightNumber= :flightNumber"),
         @NamedQuery(name = "countFlightNumber", query = "select count(flightNumber) from Flight where flightNumber= :flightNumber"),
         @NamedQuery(name = "deleteFlight", query = "delete from Flight where flightNumber= :flightNumber"),
         @NamedQuery(name = "updateSeatsAvailable", query = "update Flight set seatsAvailable = seatsAvailable - :numberOfPeople where flightNumber= :flightNumber"),
@@ -47,7 +47,8 @@ public class Flight {
     private int seatsAvailable;
 
 
-    public Flight(String flightNumber, Date departureDate, Timestamp departureTime, Date arrivingDate, Timestamp arrivingTime, double price, int seatsAvailable) {
+    public Flight(String flightNumber, Date departureDate, Timestamp departureTime, Date arrivingDate, Timestamp arrivingTime, double price, int seatsAvailable,
+                  Airport departureAirport, Airport arrivingAirport) {
         this.flightNumber = flightNumber;
         this.departureDate = departureDate;
         this.departureTime = departureTime;
@@ -55,6 +56,8 @@ public class Flight {
         this.arrivingTime = arrivingTime;
         this.price = price;
         this.seatsAvailable = seatsAvailable;
+        this.departureAirport = departureAirport;
+        this.arrivingAirport = arrivingAirport;
     }
 
     public Flight() {

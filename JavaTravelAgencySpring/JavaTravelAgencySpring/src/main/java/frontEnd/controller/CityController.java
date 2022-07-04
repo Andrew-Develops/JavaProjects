@@ -18,6 +18,7 @@ public class CityController {
     @Autowired
     CountryService countryService;
 
+    //inseram un oras
     @PostMapping(path = "/insertCity")
     public ResponseEntity insertCity(@RequestBody @Valid CityDTO cityDTO) {
         if (cityService.countCity(cityDTO.getName()) != 0) {
@@ -27,6 +28,7 @@ public class CityController {
         return ResponseEntity.ok(cityDTO.getName() + " added.");
     }
 
+    //cautam un oras dupa nume
     @GetMapping(path = "/findCity")
     public ResponseEntity findCity(@RequestParam String name) {
         CityDTO cityDTO = cityService.findCity(name);
@@ -36,6 +38,7 @@ public class CityController {
         return ResponseEntity.ok(cityDTO);
     }
 
+    //schimbam numele unui oras
     @PutMapping(path = "/changeCityName")
     public ResponseEntity changeCityName(@RequestParam String name, String newName) {
         if (cityService.countCity(newName) != 0) {
@@ -49,6 +52,7 @@ public class CityController {
         }
     }
 
+    //stergem un oras
     @DeleteMapping(path = "/deleteCity")
     public ResponseEntity deleteCityByName(@RequestParam String name) {
         if (cityService.countCity(name) == 0) {
@@ -58,6 +62,7 @@ public class CityController {
         return ResponseEntity.ok("City: " + name + " deleted from database");
     }
 
+    //cautam un oras dintr-o tara
     @GetMapping(path = "/findCitiesInCountry")
     public ResponseEntity findCitiesInCountry(@RequestParam String countryName) {
         if (countryService.countCountry(countryName) == 0) {

@@ -14,6 +14,7 @@ public class RoomService {
     @Autowired
     RoomDAO roomDAO;
 
+    //cautam o camera dupa tipul ei
     public RoomDTO findRoomByType(String type) {
         RoomDTO roomDTO = new RoomDTO();
         Room room = roomDAO.findRoomByType(type);
@@ -25,6 +26,7 @@ public class RoomService {
         return roomDTO;
     }
 
+    //updatam o camera dupa disponibilitate
     public void updateRoomAvailability(String typeRoom, int numberRoom) {
         roomDAO.updateRoomAvailable(typeRoom, numberRoom);
     }

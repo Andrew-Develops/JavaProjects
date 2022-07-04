@@ -13,6 +13,7 @@ public class ContinentController {
     @Autowired
     ContinentService continentService;
 
+    //adaugam un continent
     @PostMapping(path = "/insertContinent")
     public ResponseEntity insertContinent(@RequestBody ContinentDTO continentDTO) {
         if (continentService.countContinent(continentDTO.getName()) != 0) {
@@ -22,6 +23,7 @@ public class ContinentController {
         return ResponseEntity.ok(continentDTO.getName() + " added.");
     }
 
+    //cautam un continent dupa nume
     @GetMapping(path = "/findContinentByName")
     public ResponseEntity findContinentByName(@RequestParam String name){
         ContinentDTO continentDTO = continentService.findContinentByName(name);
@@ -31,6 +33,7 @@ public class ContinentController {
         return ResponseEntity.ok(continentDTO);
     }
 
+    //stergem un continent
     @DeleteMapping(path = "/deleteContinentByName")
     public ResponseEntity deleteContinentByName(@RequestParam String name){
         if(continentService.countContinent(name)==0){

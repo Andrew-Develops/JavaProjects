@@ -19,14 +19,17 @@ public class ContinentService {
         continentDAO.insertContinent(continent);
     }
 
+    //verificam daca mai este o instanta cu acelasi nume in baza de date
     public long countContinent(String name) {
         return continentDAO.countContinent(name);
     }
 
+    //stergem un continent
     public int deleteContinent(String name) {
         return continentDAO.deleteContinent(name);
     }
 
+    //cautam un continent dupa nume
     public ContinentDTO findContinentByName(String name) {
         ContinentDTO continentDTO = new ContinentDTO();
         Continent continent = continentDAO.findContinentByName(name);

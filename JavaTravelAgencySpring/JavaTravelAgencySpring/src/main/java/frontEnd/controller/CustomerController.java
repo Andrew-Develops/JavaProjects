@@ -16,9 +16,10 @@ public class CustomerController {
     @Autowired
     AccountService accountService;
 
+    //inseram un customer
     @PostMapping(path = "/insertCustomer")
     public ResponseEntity insertCustomer(@RequestBody CustomerDTO customerDTO) {
-        //luam parola din accountDTO si o trecem prin metoda cryptPassword pentru a ajunge o parola criptata in baza de date
+        //luam parola din accountDTO si o trecem prin metoda cryptPassword pentru a ajunge o parolă criptata in baza de date
         customerDTO.getAccountDTO().setPassword(accountService.cryptPassword(customerDTO.getAccountDTO().getPassword()));
         //verificam daca exista deja un cont cu acest userName si parola
         if (accountService.countUserName(customerDTO.getAccountDTO().getUserName()) != 0) {
@@ -30,6 +31,7 @@ public class CustomerController {
             return ResponseEntity.ok("Customer added.");
         }
     }
+
     //schimba coloana din baza de date logged_in pentru in functie de userName, password de la 0 la 1
     @PutMapping(path = "/logIn")
     public ResponseEntity logIn(@RequestParam String userName, String password) {
@@ -47,6 +49,7 @@ public class CustomerController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Wrong input for 'UserName' or 'password'!");
         }
     }
+
     //schimba coloana din baza de date logged_in pentru in functie de userName, password de la 1 la 0
     @PutMapping(path = "/logOut")
     public ResponseEntity logOut(@RequestParam String userName) {
@@ -57,6 +60,7 @@ public class CustomerController {
             return ResponseEntity.ok(userName + " logged out successfully.");
         }
     }
+
     //afisam un customer dupa email
     @GetMapping(path = "/getCustomerByEmail")
     public ResponseEntity getCustomerByEmail(@RequestParam String email) {
@@ -67,6 +71,7 @@ public class CustomerController {
             return ResponseEntity.ok(customerDTO);
         }
     }
+
     //afisam un customer dupa userName
     @GetMapping(path = "/getCustomerByUserName")
     public ResponseEntity getCustomerByUserName(@RequestParam String userName) {
@@ -77,6 +82,7 @@ public class CustomerController {
             return ResponseEntity.ok(customerDTO);
         }
     }
+
     //afisam un customer dupa userName si password
     @GetMapping(path = "/findCustomerAccount")
     public ResponseEntity findCustomerAccount(@RequestParam String userName, String password) {

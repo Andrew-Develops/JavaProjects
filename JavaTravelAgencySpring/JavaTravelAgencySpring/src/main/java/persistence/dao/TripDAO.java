@@ -6,7 +6,7 @@ import persistence.entities.Trip;
 import persistence.util.HibernateUtil;
 
 import javax.persistence.Query;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 @Repository

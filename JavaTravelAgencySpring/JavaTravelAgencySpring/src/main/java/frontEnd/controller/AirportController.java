@@ -16,6 +16,7 @@ public class AirportController {
     @Autowired
     AirportService airportService;
 
+    //inseram un aeroport
     @PostMapping(path = "/insertAirport")
     public ResponseEntity insertAirport(@RequestBody @Valid AirportDTO airportDTO) {
         if (airportService.countAirportByName(airportDTO.getName()) != 0) {
@@ -25,6 +26,7 @@ public class AirportController {
         return ResponseEntity.ok(airportDTO.getName() + " added.");
     }
 
+    //cautam un aeroport dupa nume
     @GetMapping(path = "/findAirport")
     public ResponseEntity findAirport(@RequestParam String name) {
         AirportDTO airportDTO = airportService.findAirportByName(name);
@@ -34,6 +36,7 @@ public class AirportController {
         return ResponseEntity.ok(airportDTO);
     }
 
+    //cautam un aeroport dupa numele orasului
     @GetMapping(path = "/findAirportByCityName")
     public ResponseEntity findAirportByCityName(@RequestParam String cityName) {
         List<AirportDTO> airportDTOList = airportService.findAirportByCityName(cityName);
@@ -43,6 +46,7 @@ public class AirportController {
         return ResponseEntity.ok(airportDTOList);
     }
 
+    //schimbam numele unui aeroport
     @PutMapping(path = "/changeAirportName")
     public ResponseEntity changeAirportName(@RequestParam String oldName, String newName) {
         if (airportService.countAirportByName(newName) != 0) {
@@ -56,6 +60,7 @@ public class AirportController {
         }
     }
 
+    //stergem un aeroport
     @DeleteMapping(path = "/deleteAirportByName")
     public ResponseEntity deleteAirportByName(@RequestBody String name) {
         if (airportService.deleteAirportByName(name) == 0) {

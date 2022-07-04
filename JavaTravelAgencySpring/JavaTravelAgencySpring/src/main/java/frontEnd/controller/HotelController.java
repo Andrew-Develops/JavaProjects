@@ -16,6 +16,7 @@ public class HotelController {
     @Autowired
     HotelService hotelService;
 
+    //inseram un hotel
     @PostMapping(path = "/insertHotel")
     public ResponseEntity insertHotel(@RequestBody @Valid HotelDTO hotelDTO) {
         List<String> addressList = hotelService.countHotelByAddress(hotelDTO.getAddress());
@@ -26,6 +27,7 @@ public class HotelController {
         return ResponseEntity.ok(hotelDTO.getName() + " added.");
     }
 
+    //cautam un hotel dupa nume
     @GetMapping(path = "/findHotelByName")
     public ResponseEntity findHotelByName(@RequestParam String hotelName) {
         List<HotelDTO> hotelDTOList = hotelService.findHotelByName(hotelName);
@@ -35,6 +37,7 @@ public class HotelController {
         return ResponseEntity.ok(hotelDTOList);
     }
 
+    //cautam un hotel in functie de oras
     @GetMapping(path = "/findHotelByCity")
     public ResponseEntity findHotelByCity(@RequestParam String cityName) {
         List<HotelDTO> hotelDTOList = hotelService.findHotelInCity(cityName);
@@ -44,6 +47,7 @@ public class HotelController {
         return ResponseEntity.ok(hotelDTOList);
     }
 
+    //cautam un hotel dupa adresa
     @GetMapping(path = "/findHotelByAddress")
     public ResponseEntity findHotelByAddress(@RequestParam String addressName) {
         HotelDTO hotelDTO = hotelService.findHotelByAddress(addressName);
@@ -53,6 +57,7 @@ public class HotelController {
         return ResponseEntity.ok(hotelDTO);
     }
 
+    //schimbam numele hotelului
     @PutMapping(path = "/changeHotelName")
     public ResponseEntity changeHotelName(@RequestParam String oldName, String newName) {
         if (hotelService.countHotelByName(newName) != 0) {
@@ -66,6 +71,7 @@ public class HotelController {
         }
     }
 
+    //stergem un hotel
     @DeleteMapping(path = "/deleteHotelByName")
     public ResponseEntity deleteHotelByName(@RequestParam String hotelName) {
         //daca este egal cu 0, atunci nu exista nici un hotel cu acel nume in baza de date

@@ -72,4 +72,33 @@ http://localhost:8080/insertAirport
     }
 }
 
+http://localhost:8080/insertFlight
+{
+    "flightNumber":"34d2",
+    "departureDate":"2023-04-15",
+    "departureTime":"03:14:07",
+    "departureAirport":{
+        "name":"Henri Coandă International",
+        "cityDTO":{
+        "name":"Bucuresti",
+        "countryDTO":{
+            "name":"Romania"
+            }   
+        }
+    },
+    "arrivingDate":"2023-04-15",
+    "arrivingTime":"05:30:00",
+    "arrivingAirport":{
+        "name":"Barcelona Airport",
+        "cityDTO":{
+        "name":"Barcelona",
+        "countryDTO":{
+            "name":"Spania"
+            }
+        }
+    },
+    "price":"225",
+    "seatsAvailable":"28"
+}
+
 

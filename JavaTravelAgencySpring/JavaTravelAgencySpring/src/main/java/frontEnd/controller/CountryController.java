@@ -19,6 +19,7 @@ public class CountryController {
     @Autowired
     ContinentService continentService;
 
+    //inseram o tara
     @PostMapping(path = "/insertCountry")
     public ResponseEntity insertCountry(@RequestBody @Valid CountryDTO countryDTO) {
         if (countryService.countCountry(countryDTO.getName()) != 0) {
@@ -29,6 +30,7 @@ public class CountryController {
         return ResponseEntity.ok("Country: " + countryDTO.getName() + " added");
     }
 
+    //cautam o tara dupa nume
     @GetMapping(path = "/findCountry")
     public ResponseEntity getCountryByName(@RequestParam String name) {
         CountryDTO countryDTO = countryService.findCountryByName(name);
@@ -38,6 +40,7 @@ public class CountryController {
         return ResponseEntity.ok(countryDTO);
     }
 
+    //cautam o tara in functie de continent
     @GetMapping(path = "/findCountriesInContinent")
     public ResponseEntity getCountryByContinent(@RequestParam String nameContinent) {
         if (continentService.countContinent(nameContinent) == 0) {
@@ -50,6 +53,7 @@ public class CountryController {
         return ResponseEntity.ok(countryDTOList);
     }
 
+    //stergem o tara
     @DeleteMapping(path = "/deleteCountry")
     public ResponseEntity deleteCountryByName(@RequestParam String name) {
         if (countryService.countCountry(name) != 0) {
@@ -59,6 +63,7 @@ public class CountryController {
         return ResponseEntity.ok("Country: " + name + " deleted from database");
     }
 
+    //schimba numele unei tari
     @PutMapping(path = "/changeCountryName")
     public ResponseEntity changeCountryName(@RequestParam String oldName, String newName) {
         //mai intai verificam daca numele cu care vrem sa il schimbam deja exista in baza de date

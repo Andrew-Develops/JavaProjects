@@ -40,7 +40,7 @@ public class HotelService {
 
     public void setRoomsInHotel(HotelDTO hotelDTO, Hotel hotel) {
         Set<Room> roomSet = new HashSet<>();
-        for (RoomDTO r : hotelDTO.getRoomDTO()) {
+        for (RoomDTO r : hotelDTO.getRoomDTOSet()) {
             Room room = new Room();
             room.setType(r.getType());
             room.setNumberOfRooms(r.getNumberOfRooms());
@@ -63,7 +63,7 @@ public class HotelService {
             roomDTO.setPrice(r.getPrice());
             roomDTOSet.add(roomDTO);
         }
-        hotelDTO.setRoomDTO(roomDTOSet);
+        hotelDTO.setRoomDTOSet(roomDTOSet);
     }
 
 
@@ -72,10 +72,10 @@ public class HotelService {
         City cityFound = cityDAO.findCityByName(hotelDTO.getCityDTO().getName());
         if (cityFound != null) {
             hotel.setCity(cityFound);
-        }else{
+        } else {
             City city = new City();
             city.setName(hotelDTO.getCityDTO().getName());
-            setCountry(hotelDTO,city);
+            setCountry(hotelDTO, city);
             hotel.setCity(city);
         }
     }
@@ -185,8 +185,6 @@ public class HotelService {
             //setam orasul pe hotel
             hotelDTO.setCityDTO(cityDTO);
             hotelDTOList.add(hotelDTO);
-
-
         }
         return hotelDTOList;
     }

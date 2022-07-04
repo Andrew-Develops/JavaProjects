@@ -23,7 +23,7 @@ public class HotelDTO {
 
     @NotNull
     @Valid
-    private Set<RoomDTO> roomDTO;
+    private Set<RoomDTO> roomDTOSet;
 
     @Valid
     private CityDTO cityDTO;
@@ -64,12 +64,12 @@ public class HotelDTO {
         this.description = description;
     }
 
-    public Set<RoomDTO> getRoomDTO() {
-        return roomDTO;
+    public Set<RoomDTO> getRoomDTOSet() {
+        return roomDTOSet;
     }
 
-    public void setRoomDTO(Set<RoomDTO> roomDTO) {
-        this.roomDTO = roomDTO;
+    public void setRoomDTOSet(Set<RoomDTO> roomDTOSet) {
+        this.roomDTOSet = roomDTOSet;
     }
 
     public CityDTO getCityDTO() {
@@ -87,7 +87,7 @@ public class HotelDTO {
                 ", address='" + address + '\'' +
                 ", numberOfStars=" + numberOfStars +
                 ", description='" + description + '\'' +
-                ", roomDTO=" + roomDTO +
+                ", roomDTO=" + roomDTOSet +
                 ", cityDTO=" + cityDTO +
                 '}';
     }
