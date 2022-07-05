@@ -9,7 +9,7 @@ An application that inserts, updates, deletes and displays students, teachers, g
 JavaSchoolHibernateSpring: An application that inserts, updates, deletes and displays students, teachers, groups from the database and responds to http request
 
 
-JavaTravelAgencySpring: (WIP) modeling a travel agency and all the functionalities that are normally found
+JavaTravelAgencySpring: modeling a travel agency and all the functionalities that are normally found
 
 
 ## Technologies
