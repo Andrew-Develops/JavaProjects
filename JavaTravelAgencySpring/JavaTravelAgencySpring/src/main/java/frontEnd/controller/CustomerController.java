@@ -1,12 +1,17 @@
 package frontEnd.controller;
 
 import business.dto.CustomerDTO;
-import business.service.AccountService;
-import business.service.CustomerService;
+import business.dto.PurchasedTripDTO;
+import business.dto.RoomDTO;
+import business.dto.TripDTO;
+import business.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @RestController
 public class CustomerController {
@@ -15,6 +20,12 @@ public class CustomerController {
     CustomerService customerService;
     @Autowired
     AccountService accountService;
+    @Autowired
+    TripService tripService;
+    @Autowired
+    RoomService roomService;
+    @Autowired
+    PurchasedTripService purchasedTripService;
 
     //inseram un customer
     @PostMapping(path = "/insertCustomer")
@@ -106,7 +117,42 @@ public class CustomerController {
         }
     }
 
+    @PostMapping(path = "/purchasedTrip")
+    public ResponseEntity purchaseTrip(@RequestBody String userName, String tripToPurchase, int numberOfAdults, int numberOfChildren, int singleRooms, int doubleRooms) {
+        TripDTO tripDTO = tripService.findTripByName(tripToPurchase);
+        if (tripDTO == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No trip with the name: " + tripToPurchase + " was found in database");
+        }
+        CustomerDTO customerDTO = customerService.findCustomerByUserName(userName);
+        if (customerDTO == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No customer with the user name: " + userName + " was found in database");
+        }
+        if (!customerDTO.getAccountDTO().isLoggedIn()) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Log in before you make a purchase!");
+        }
+        if (!tripService.checkAvailability(tripDTO)) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("There are no trips available at this moment");
+        }
+        tripDTO.setNumberOfAdults(numberOfAdults);
+        tripDTO.setNumberOfChildren(numberOfChildren);
 
+        //pentru a calcula pretul avem nevoie sa stim cate camere eu fost inchiriate
+        Set<RoomDTO> roomDTOSet = new HashSet<>();
+        RoomDTO singleRoomDTO = roomService.findRoomByType("single");
+        roomDTOSet.add(singleRoomDTO);
+        RoomDTO doubleRoomDTO = roomService.findRoomByType("double");
+        roomDTOSet.add(doubleRoomDTO);
+
+        PurchasedTripDTO purchasedTripDTO = new PurchasedTripDTO();
+        purchasedTripDTO.setCustomerDTO(customerDTO);
+        purchasedTripDTO.setTripDTO(tripDTO);
+        //setam numarul de camere cumparate
+        purchasedTripDTO.getTripDTO().getStayingHotelDTO().setRoomDTOSet(roomDTOSet);
+        //calculam pretul total in functie de numarul de camere
+        purchasedTripDTO.setTotalPrice((singleRoomDTO.getPrice() * singleRooms) + (doubleRoomDTO.getPrice() * doubleRooms));
+        purchasedTripService.insertPurchasedTrip(purchasedTripDTO);
+        return ResponseEntity.ok("Trip purchased");
+    }
 }
 
 

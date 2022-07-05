@@ -1,6 +1,8 @@
 package frontEnd.controller;
 
+import business.dto.PurchasedTripDTO;
 import business.dto.TripDTO;
+import business.service.PurchasedTripService;
 import business.service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,8 @@ public class TripController {
 
     @Autowired
     TripService tripService;
+    @Autowired
+    PurchasedTripService purchasedTripService;
 
     //inseram o excursie
     @PostMapping(path = "/insertTrip")
@@ -86,6 +90,15 @@ public class TripController {
         }
         tripService.deleteTripByName(name);
         return ResponseEntity.ok("Trip: " + name + " deleted");
+    }
+
+    @GetMapping(path = "/shoePurchasedTripByCustomer")
+    public ResponseEntity showPurchasedTripByCustomer(@RequestParam String name) {
+        List<PurchasedTripDTO> purchasedTripDTOList = purchasedTripService.showPurchasedTrips(name);
+        if (purchasedTripDTOList.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No trips purchased by that customer");
+        }
+        return ResponseEntity.ok(purchasedTripDTOList);
     }
 
 }

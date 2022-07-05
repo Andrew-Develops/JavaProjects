@@ -304,6 +304,14 @@ public class TripService {
         return tripDAO.deleteTripByName(name);
     }
 
+    public TripDTO findTripByName(String name) {
+        Trip trip = tripDAO.findTripByName(name);
+        if (trip == null) {
+            return null;
+        }
+        return getTripDTO(trip);
+    }
+
     //afisam toate excursiile
     public List<TripDTO> findAllTrips() {
         List<Trip> tripList = tripDAO.findAllTrips();
@@ -320,7 +328,7 @@ public class TripService {
 
     //afisam excursiile dupa nume
     public List<TripDTO> findTripsByName(String name) {
-        List<Trip> tripList = tripDAO.findTripByName(name);
+        List<Trip> tripList = tripDAO.findTripsByName(name);
         List<TripDTO> tripDTOList = getTripDTOList(tripList);
         return tripDTOList;
     }
@@ -458,6 +466,14 @@ public class TripService {
         setDepartureAirportDTO(returningFlightDTO, returningFlight.getDepartureAirport());
         setArrivingAirportDTO(returningFlight, returningFlightDTO);
         return returningFlightDTO;
+    }
+
+    public boolean checkAvailability(TripDTO tripDTO) {
+        if (tripDTO.getNumberOfTripsAvailable() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 

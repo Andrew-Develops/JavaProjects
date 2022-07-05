@@ -13,6 +13,15 @@ import java.util.List;
 @Repository
 public class PurchasedTripDAO {
 
+
+    public void insertPurchasedTrip(PurchasedTrip purchasedTrip) {
+        Session session = HibernateUtil.getSessionFactoryMethod().openSession();
+        session.beginTransaction();
+        session.save(purchasedTrip);
+        session.getTransaction().commit();
+        session.close();
+    }
+
     public List<PurchasedTrip> findPurchasedTripByCustomer(String name) {
         Session session = HibernateUtil.getSessionFactoryMethod().openSession();
         session.beginTransaction();

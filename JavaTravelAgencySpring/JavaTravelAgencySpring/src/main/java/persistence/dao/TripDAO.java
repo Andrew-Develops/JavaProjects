@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import persistence.entities.Trip;
 import persistence.util.HibernateUtil;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import java.util.Date;
 import java.util.List;
@@ -92,15 +93,30 @@ public class TripDAO {
         session.close();
         return result;
     }
+    public Trip findTripByName(String name){
+        Session session = HibernateUtil.getSessionFactoryMethod().openSession();
+        session.beginTransaction();
+        Query findTripByNameQuery = session.createNamedQuery("findTripByName");
+        findTripByNameQuery.setParameter("name",name);
+        Trip trip = null;
+        try {
+            trip = (Trip) findTripByNameQuery.getSingleResult();
+        }catch (NoResultException e){
+            e.printStackTrace();
+        }
+        session.getTransaction().commit();
+        session.close();
+        return trip;
+    }
 
-    public List<Trip> findTripByName(String name) {
+    public List<Trip> findTripsByName(String name) {
         Session session = HibernateUtil.getSessionFactoryMethod().openSession();
         session.beginTransaction();
         Query findTripByNameQuery = session.createNamedQuery("findTripByName");
         findTripByNameQuery.setParameter("name", name);
-        List<Trip> result = findTripByNameQuery.getResultList();
+        List<Trip> tripList = findTripByNameQuery.getResultList();
         session.getTransaction().commit();
         session.close();
-        return result;
+        return tripList;
     }
 }
