@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Registration and Login App</title>
+    <!--Adaugam un bootstrap css pentru a stiliza pagina noastra-->
+    <!--Bootstrap este un CSS framework-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+<body>
+<!--Cream o bara de navigare(header). Aceasta bara de navigare se gaseste pe situl bootstrap-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" th:href="@{/}">Registration and
+                Login Module</a>
+        </div>
+    </div>
+</nav>
+<br>
+<!--Cream un HTML registration form-->
+<!--container este o clasa CSS furnizata de bootstrap-->
+<!--row este o clasa CSS furnizata de bootstrap-->
+<div class="container">
+    <div class="row">
+        <!--grid system este impartit in 12 coloane, si noi ne aliniem registration form in centru si pentru asta am adaugat col-md-offset-3-->
+        <div class="col-md-6 col-md-offset-3">
+            <br>
+            <br>
+            <!-- success message -->
+            <!-- Afisam un mesaj daca userul s-a inregistrat cu succes -->
+            <!-- th:if este un thymeleaf atribut -->
+            <!-- param.success vine din clasa UserRegistrationController. Daca userul s-a inregistrat cu succes returnam: "redirect:/registration?success" CARE ne trimite
+             aici in parametrul param.success-->
+            <div th:if="${param.success}"> <!-- dara este true, atunci afisam textul de dedesubt -->
+                <div class="alert alert-info">
+                    You have successfully registered. Welcome to our website!
+                </div>
+            </div>
+            <br>
+            <h1>Registration</h1>
+            <!-- @ = este un context path al aplicatiei si /registration este url-ul-->
+            <!-- Cum functioneaza: cand un user depune inregistrarea, acest request se duce in clasa Controler(UserRegistrationController)
+            si va apela post requestul de pe metoda noastra(registerUserAccount)-->
+            <!-- Cand thymeleaf vrea sa stocheze date, obiectul "user" va fi disponibil din Controller din metoda(userRegistrationDTO) -->
+            <form th:action="@{/registration}" method="post" th:object="${user}">
+                <div class="form-group">
+                    <label class="control-label" for="firstName">
+                        First Name
+                    </label>
+                    <!-- firstName este campul definit in clasa DTO(private String firstName) -->
+                    <!-- Numele parametrului trebuie sa fie identic cu cel din clasa DTO -->
+                    <input id="firstName" class="form-control" th:field="*{firstName}" required
+                           autofocus="autofocus"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="lastName">
+                        Last Name
+                    </label>
+                    <!-- lastName este campul definit in clasa DTO(private String lastName) -->
+                    <input id="lastName" class="form-control" th:field="*{lastName}" required
+                           autofocus="autofocus"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="email">
+                        Email
+                    </label>
+                    <!-- email este campul definit in clasa DTO(private String email) -->
+                    <input id="email" class="form-control" th:field="*{email}" required
+                           autofocus="autofocus"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="password">
+                        Password
+                    </label>
+                    <!-- password este campul definit in clasa DTO(private String password) -->
+                    <!-- pentru a nu afisa parola folosim type="password" -->
+                    <input id="password" class="form-control" type="password" th:field="*{password}" required
+                           autofocus="autofocus"/>
+                </div>
+                <!-- adaugam un register button -->
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Register</button>
+                    <!-- am creat un hyperlink. De fiecare data cand apasam pe "Login here" o sa fim trimisi pe login page -->
+                    <span> Already registered?<a href="/" th:href="@{/login}"> Login here </a></span>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
