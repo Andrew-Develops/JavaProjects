@@ -3,21 +3,19 @@
 2. [Technologies](#technologies)
 ### General Info
 
-JavaSchoolHibernateOnly: 
-An application that inserts, updates, deletes and displays students, teachers, groups from the database using only Hibernate framework
 
-JavaSchoolHibernateSpring: An application that inserts, updates, deletes and displays students, teachers, groups from the database and responds to http request
+**JavaTravelAgencySpring**: modeling a travel agency that allows searching for trips according to given criteria and allow for their "purchase".
 
-
-JavaTravelAgencySpring: modeling a travel agency and all the functionalities that are normally found
+**JavaSpringRegistration**: creating a registration form where user can register, login and logout.
 
 
 ## Technologies
 
-A list of technologies used within the project: JavaSpringRegistration
-* [Hibernate](https://hibernate.org): 5.6.8.Final
-* [Spring Boot](https://spring.io/projects/spring-boot): Version 2.7.0
-
 A list of technologies used within the project: JavaTravelAgencySpring
-* [Hibernate]()
-* [Spring Boot]()
+* [Hibernate](https://github.com/Andrew-Develops/JavaSmallProjects/network/dependencies)
+* [Spring Boot](https://github.com/Andrew-Develops/JavaSmallProjects/network/dependencies)
+
+A list of technologies used within the project: JavaSpringRegistration
+* [Hibernate](https://github.com/Andrew-Develops/JavaSmallProjects/network/dependencies)
+* [Spring Boot](https://github.com/Andrew-Develops/JavaSmallProjects/network/dependencies)
+* [Thymeleaf](https://github.com/Andrew-Develops/JavaSmallProjects/network/dependencies)
