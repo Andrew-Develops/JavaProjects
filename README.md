@@ -19,3 +19,15 @@ A list of technologies used within the project: JavaSpringRegistration
 * [Hibernate](https://github.com/Andrew-Develops/JavaSmallProjects/network/dependencies)
 * [Spring Boot](https://github.com/Andrew-Develops/JavaSmallProjects/network/dependencies)
 * [Thymeleaf](https://github.com/Andrew-Develops/JavaSmallProjects/network/dependencies)
+
+## UML diagram
+
+I use this diagram to represent the flow of data in my application
+
+```mermaid
+graph  BT;  
+ A[(MySQL Database)]-->B([Persistence Layer]);
+ B---E[DAO Classes]---L[Entities];  
+ B-->C([Business layer])---K[DTO Classes]---J[Service];  
+ C-->D([Front End])---P[UI]---O[Controller];
+```
