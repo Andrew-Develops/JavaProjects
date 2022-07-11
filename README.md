@@ -16,7 +16,6 @@ A list of technologies used within the project: JavaTravelAgencySpring
 * [Spring Boot](https://github.com/Andrew-Develops/JavaSmallProjects/network/dependencies)
 
 A list of technologies used within the project: JavaSpringRegistration
-* [Hibernate](https://github.com/Andrew-Develops/JavaSmallProjects/network/dependencies)
 * [Spring Boot](https://github.com/Andrew-Develops/JavaSmallProjects/network/dependencies)
 * [Thymeleaf](https://github.com/Andrew-Develops/JavaSmallProjects/network/dependencies)
 
