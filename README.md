@@ -22,7 +22,7 @@ A list of technologies used within the project: JavaSpringRegistration
 
 ## UML diagram
 
-I use this diagram to represent the flow of data in my application
+I use this diagram to represent the flow of data in my applications
 
 ```mermaid
 graph  BT;  
