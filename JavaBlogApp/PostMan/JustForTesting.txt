@@ -1,0 +1,7 @@
+http://localhost:8080/api/posts
+{
+    "title": "My second post",
+    "description": "Post description",
+    "content": "This is my new post"
+}
+
