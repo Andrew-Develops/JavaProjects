@@ -4,10 +4,9 @@ import com.springboot.blog.dto.PostDto;
 import com.springboot.blog.service.PostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController //Folosim adnotarea deoarece dezvoltam un REST APIs
 @RequestMapping(path = "/api/posts") //pathul metodei
@@ -20,10 +19,36 @@ public class PostController {
         this.postService = postService;
     }
 
-    //Cream un blog post
+    //Create blog post rest api
     @PostMapping
     public ResponseEntity<PostDto> createPost(@RequestBody PostDto postDto) {
-        //ResponseEntity are 2 parametri, unul este raspunsul creat de metoda createPost si celalalt este HTTP status code creat
-        return new ResponseEntity<>(postService.createPost(postDto), HttpStatus.CREATED);
+        //ResponseEntity accepta 2 argumente, unul este corpul trimis catre client si celalalt este HTTP status code creat
+        PostDto postResponse = postService.createPost(postDto);
+        return new ResponseEntity<>(postResponse, HttpStatus.CREATED);
+    }
+
+    //Get all posts rest api
+    @GetMapping
+    public List<PostDto> getAllPosts() {
+        return postService.getAllPosts();
+    }
+
+    //Get post by id rest api
+    @GetMapping("/{id}")
+    public ResponseEntity<PostDto> getPostById(@PathVariable(name = "id") long id) {
+        return ResponseEntity.ok(postService.getPostById(id));
+    }
+
+    //Update post by id rest api
+    @PutMapping("/{id}")
+    public ResponseEntity<PostDto> updatePostById(@RequestBody PostDto postDto, @PathVariable(name = "id") long id) {
+        PostDto postResponse = postService.updatePostById(postDto, id);
+        return new ResponseEntity<>(postResponse, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletePostById(@PathVariable(name = "id") long id) {
+        postService.deletePostById(id);
+        return new ResponseEntity<>("Post successfully deleted", HttpStatus.OK);
     }
 }

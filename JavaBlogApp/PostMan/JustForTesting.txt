@@ -1,7 +1,19 @@
-http://localhost:8080/api/posts
+POST http://localhost:8080/api/posts 
 {
     "title": "My second post",
     "description": "Post description",
     "content": "This is my new post"
 }
 
+GET http://localhost:8080/api/posts
+
+GET http://localhost:8080/api/posts/2 
+
+PUT http://localhost:8080/api/posts/4
+{
+    "title": "My 4'th post",
+    "description": "Post description",
+    "content": "This is my 4'th post"
+}
+
+DELETE http://localhost:8080/api/posts/5
