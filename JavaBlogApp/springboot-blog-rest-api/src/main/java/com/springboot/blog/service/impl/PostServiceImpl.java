@@ -39,12 +39,12 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostResponse getAllPosts(int pageNo, int pageSize, String sortBy) {
-//        //Cream un sort object in functie de input(asc sau desc)
-//        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
-//                : Sort.by(sortBy).descending();
+    public PostResponse getAllPosts(int pageNo, int pageSize, String sortBy, String sortDir) {
+        //Cream un sort object in functie de input(asc sau desc)
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending();
         //Cream Pageable instance
-        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
         //Luam toate posts din DB
         Page<Post> posts = postRepository.findAll(pageable);
         //Get content from page object
