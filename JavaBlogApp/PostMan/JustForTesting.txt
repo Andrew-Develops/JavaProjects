@@ -19,3 +19,6 @@ PUT http://localhost:8080/api/posts/4
 DELETE http://localhost:8080/api/posts/5
 
 GET with Pagination http://localhost:8080/api/posts?pageNo=0&pageSize=5
+
+GET with Pagination and Sorting	http://localhost:8080/api/posts?pageNo=0&pageSize=5&sortBy=title
+						http://localhost:8080/api/posts?pageNo=0&pageSize=5&sortBy=id
