@@ -22,3 +22,16 @@ GET with Pagination http://localhost:8080/api/posts?pageNo=0&pageSize=5
 
 GET with Pagination and Sorting	http://localhost:8080/api/posts?pageNo=0&pageSize=5&sortBy=title
 						http://localhost:8080/api/posts?pageNo=0&pageSize=5&sortBy=id
+						
+GET with Pagination,Sorting and Ordering 	http://localhost:8080/api/posts?pageNo=0&pageSize=10&sortBy=id&sortDir=asc
+								http://localhost:8080/api/posts?pageNo=0&pageSize=10&sortBy=id&sortDir=desc
+	
+							
+POST http://localhost:8080/api/posts/14/comments
+{
+    "name":"John",
+    "email":"John@gmail.com",
+    "body":"Nice and useful"
+}
+
+

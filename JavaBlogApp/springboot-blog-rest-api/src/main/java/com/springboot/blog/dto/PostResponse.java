@@ -9,6 +9,7 @@ import java.util.List;
 @Data //genereaza Getter, Setter, toString, hashCode
 @AllArgsConstructor
 @NoArgsConstructor
+//Clasa care se ocupa de Pagination support
 public class PostResponse {
     private List<PostDto> content;
     private int pageNo;
