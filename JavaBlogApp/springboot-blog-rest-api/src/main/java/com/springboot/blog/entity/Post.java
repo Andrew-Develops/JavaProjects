@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Data   //genereaza Getter, Setter, toString
+@Data   //genereaza Getter, Setter, toString, hashCode
 @AllArgsConstructor //genereaza un constructor cu toate variabilele
 @NoArgsConstructor //genereaza un constructor default
 
