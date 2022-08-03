@@ -34,4 +34,15 @@ POST http://localhost:8080/api/posts/14/comments
     "body":"Nice and useful"
 }
 
+GET http://localhost:8080/api/posts/14/comments 
+
+GET http://localhost:8080/api/posts/14/comments/1
+
+PUT http://localhost:8080/api/posts/14/comments/2
+{
+    "name":"JohnUpdated",
+    "email":"John@gmail.com",
+    "body":"Updated comment"
+}
+
 

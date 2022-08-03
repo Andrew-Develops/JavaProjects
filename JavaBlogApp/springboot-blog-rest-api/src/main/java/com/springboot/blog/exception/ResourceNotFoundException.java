@@ -3,6 +3,7 @@ package com.springboot.blog.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+//Folosim exceptie atunci cand nu gasim elementul in DB
 @ResponseStatus(value = HttpStatus.NOT_FOUND) // Forteaza Spring boot sa raspunda cu un anumit HTTP status code de fiecare data cand intalneste aceasta exceptie
 public class ResourceNotFoundException extends RuntimeException {
     private String resourceName;
