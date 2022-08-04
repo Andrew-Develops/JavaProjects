@@ -1,14 +1,13 @@
 package com.springboot.blog.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data   //genereaza Getter, Setter, toString, hashCode
+@Getter
+@Setter
 @AllArgsConstructor //genereaza un constructor cu toate variabilele
 @NoArgsConstructor //genereaza un constructor default
 

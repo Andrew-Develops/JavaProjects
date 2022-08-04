@@ -6,6 +6,7 @@ import com.springboot.blog.entity.Post;
 import com.springboot.blog.exception.ResourceNotFoundException;
 import com.springboot.blog.repository.PostRepository;
 import com.springboot.blog.service.PostService;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,9 +21,12 @@ public class PostServiceImpl implements PostService {
 
     private PostRepository postRepository;
 
+    private ModelMapper modelMapper;
+
     //Daca clasa contine un singur constructor putem omite @Autowired
-    public PostServiceImpl(PostRepository postRepository) {
+    public PostServiceImpl(PostRepository postRepository, ModelMapper modelMapper) {
         this.postRepository = postRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -91,21 +95,25 @@ public class PostServiceImpl implements PostService {
 
     //Convertim un Post Entity intr-un PostDto
     private PostDto mapToDTO(Post post) {
-        PostDto postDto = new PostDto();
-        postDto.setId(post.getId());
-        postDto.setContent(post.getContent());
-        postDto.setDescription(post.getDescription());
-        postDto.setTitle(post.getTitle());
+        //primul argument este sursa, al doilea este destinatia
+        PostDto postDto = modelMapper.map(post, PostDto.class);
+//        PostDto postDto = new PostDto();
+//        postDto.setId(post.getId());
+//        postDto.setContent(post.getContent());
+//        postDto.setDescription(post.getDescription());
+//        postDto.setTitle(post.getTitle());
         return postDto;
     }
 
     //Convertim PostDto in Post Entity
     private Post mapToEntity(PostDto postDto) {
-        Post postEntity = new Post();
-        postEntity.setTitle(postDto.getTitle());
-        postEntity.setContent(postDto.getContent());
-        postEntity.setDescription(postDto.getDescription());
-        return postEntity;
+        //primul argument este sursa, al doilea este destinatia
+        Post post = modelMapper.map(postDto, Post.class);
+//        Post postEntity = new Post();
+//        postEntity.setTitle(postDto.getTitle());
+//        postEntity.setContent(postDto.getContent());
+//        postEntity.setDescription(postDto.getDescription());
+        return post;
     }
 
 }
