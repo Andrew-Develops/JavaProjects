@@ -8,7 +8,7 @@ import java.util.List;
 //Nu folosim adnotarea @Repository aici deoarece ea se afla deja in clasa SimpleJpaRepository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
-    //Standard format to write the methods in Jpa repository
+    //In spate SpringDataJpa va auto crea un query folosind JPA Query API
     List<Comment> findByPostId(long postId);
 
 }
