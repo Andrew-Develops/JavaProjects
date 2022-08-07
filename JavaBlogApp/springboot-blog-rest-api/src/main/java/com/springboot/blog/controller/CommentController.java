@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api/")
+@RequestMapping(path = "/api/v1")
 public class CommentController {
     private CommentService commentService;
 

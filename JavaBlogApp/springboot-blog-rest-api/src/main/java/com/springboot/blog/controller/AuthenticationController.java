@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 @RestController
-@RequestMapping(path = "api/auth")
+@RequestMapping(path = "/api/v1/auth")
 public class AuthenticationController {
 
     @Autowired
