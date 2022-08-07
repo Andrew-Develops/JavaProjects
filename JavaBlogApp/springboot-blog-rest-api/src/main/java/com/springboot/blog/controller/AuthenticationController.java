@@ -8,6 +8,8 @@ import com.springboot.blog.entity.User;
 import com.springboot.blog.repository.RoleRepository;
 import com.springboot.blog.repository.UserRepository;
 import com.springboot.blog.security.JwtTokenProvider;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
 import java.util.Collections;
 
+@Api(value = "Auto controller exposes signin and signup REST APIs")
 @RestController
 @RequestMapping(path = "/api/v1/auth")
 public class AuthenticationController {
@@ -42,6 +45,7 @@ public class AuthenticationController {
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
 
+    @ApiOperation(value = "REST API to Login or SignIn user to Blog app")
     @PostMapping(path = "/signin")
     public ResponseEntity<JWTAuthResponseDto> authenticateUser(@RequestBody LoginDto loginDto) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
@@ -53,6 +57,8 @@ public class AuthenticationController {
         return ResponseEntity.ok(new JWTAuthResponseDto(token));
     }
 
+
+    @ApiOperation(value = "REST API to Register or SignUp user to Blog app")
     @PostMapping(path = "/signup")
     public ResponseEntity<?> registerUser(@RequestBody SignUpDto signUpDto) {
         //Verificam daca username exista deja in baza de date
