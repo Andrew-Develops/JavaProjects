@@ -45,7 +45,7 @@ public class PostController {
     }
 
     //Get post by id rest api
-    @GetMapping(path = "/api/posts/{id}")
+    @GetMapping(path = "/api/v1/posts/{id}")
     public ResponseEntity<PostDto> getPostById(@PathVariable(name = "id") long id) {
         return ResponseEntity.ok(postService.getPostById(id));
     }
