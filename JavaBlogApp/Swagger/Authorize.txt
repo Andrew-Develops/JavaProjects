@@ -1,2 +1,0 @@
-To get authorization for post/put/delete REST API copy the key from signin REST API into Authorize as following
-ex : Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE2NTEaVeFwuszHG-kRRFLidHimMmYM08qy0220uUsLa6MockKey
