@@ -86,7 +86,13 @@ Real time REST API's for Blog App using Spring Boot, Spring Security, JWT, Hiber
 | `id`      | `string` | **Required**. Id of item to fetch |
 |       | | **Required**. JWT Token  |
 
+## How to get JWT Token
 
+#### SignUp
+```http
+  POST /api/v1/auth/signup
+```
+Copy the key into Authorization as such : "Bearer <<insert key here>insert key here>"
 
 ## Resources
 
