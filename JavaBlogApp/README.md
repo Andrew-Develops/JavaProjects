@@ -27,6 +27,66 @@ Real time REST API's for Blog App using Spring Boot, Spring Security, JWT, Hiber
 
 [Swagger Documentation](http://springbootblogapp-env.eba-k34dcz2t.eu-west-2.elasticbeanstalk.com/swagger-ui/index.html#/)
 
+## API Reference
+
+#### Get all posts
+
+```http
+  GET /api/v1/posts
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. Your API key |
+
+#### Get post by id
+
+```http
+  GET /api/v1/posts/{id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of item to fetch |
+
+#### Post post
+```http
+  POST /api/v1/posts
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `title`      | `string` | **Required**. Title should have at least 2 characters |
+| `description`      | `string` | **Required**. Description should have at least 10 characters |
+| `content`      | `string` | **Required**. Blog post content not empty |
+|       | | **Required**. JWT Token  |
+
+#### Put post by id
+
+```http
+  PUT /api/v1/posts/{id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of item to fetch |
+| `title`      | `string` | **Required**. Title should have at least 2 characters |
+| `description`      | `string` | **Required**. Description should have at least 10 characters |
+| `content`      | `string` | **Required**. Blog post content not empty |
+|       | | **Required**. JWT Token  |
+
+#### Delete post by id
+
+```http
+  DELETE /api/v1/posts/{id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of item to fetch |
+|       | | **Required**. JWT Token  |
+
+
 
 ## Resources
 
