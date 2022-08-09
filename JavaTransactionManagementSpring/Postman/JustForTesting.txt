@@ -1,0 +1,16 @@
+POST localhost:8080/api/v1/orders
+{
+    "order":{
+        "totalQuantity": 2,
+        "shoppingCartId": 1,
+        "totalPrice": 2000
+    },
+    "payment":{
+        "type":"DEBIT",
+        "cardName":"John Smith",
+        "cardNumber":"123 123 123 123",
+        "expiryMonth": 2,
+        "expiryYear": 2025,
+        "cvc":123
+    }
+}
