@@ -90,9 +90,9 @@ Real time REST API's for Blog App using Spring Boot, Spring Security, JWT, Hiber
 
 #### SignUp
 ```http
-  POST /api/v1/auth/signup
+  POST /api/v1/auth/signin
 ```
-Copy the key into Authorization as such : "Bearer <<insert key here>insert key here>"
+Copy the key after you sign in into Authorization as such : "Bearer <<insert key here>insert key here>"
 
 ## Resources
 
