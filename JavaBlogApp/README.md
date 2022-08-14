@@ -35,10 +35,6 @@ Real time REST API's for Blog App using Spring Boot, Spring Security, JWT, Hiber
   GET /api/v1/posts
 ```
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. Your API key |
-
 #### Get post by id
 
 ```http
@@ -59,7 +55,7 @@ Real time REST API's for Blog App using Spring Boot, Spring Security, JWT, Hiber
 | `title`      | `string` | **Required**. Title should have at least 2 characters |
 | `description`      | `string` | **Required**. Description should have at least 10 characters |
 | `content`      | `string` | **Required**. Blog post content not empty |
-|       | | **Required**. JWT Token  |
+| `JWT_token`      | `string` | **Required**. JWT Token  |
 
 #### Put post by id
 
@@ -73,7 +69,7 @@ Real time REST API's for Blog App using Spring Boot, Spring Security, JWT, Hiber
 | `title`      | `string` | **Required**. Title should have at least 2 characters |
 | `description`      | `string` | **Required**. Description should have at least 10 characters |
 | `content`      | `string` | **Required**. Blog post content not empty |
-|       | | **Required**. JWT Token  |
+| `JWT_token`      | `string` | **Required**. JWT Token  |
 
 #### Delete post by id
 
@@ -84,11 +80,11 @@ Real time REST API's for Blog App using Spring Boot, Spring Security, JWT, Hiber
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `id`      | `string` | **Required**. Id of item to fetch |
-|       | | **Required**. JWT Token  |
+| `JWT_token`      | `string` | **Required**. JWT Token  |
 
 ## How to get JWT Token
 
-#### SignUp
+#### SignIn
 ```http
   POST /api/v1/auth/signin
 ```
