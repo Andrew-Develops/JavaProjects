@@ -23,10 +23,11 @@ Real time REST API's for Blog App using Spring Boot, Spring Security, JWT, Hiber
 **REST API Documentation:** Swagger
 
 **Production:** AWS
-## Documentation
+<!-- ## Documentation
 
 [Swagger Documentation](http://springbootblogapp-env.eba-k34dcz2t.eu-west-2.elasticbeanstalk.com/swagger-ui/index.html#/)
 
+-->
 ## API Reference for Posts
 
 #### Get all posts
